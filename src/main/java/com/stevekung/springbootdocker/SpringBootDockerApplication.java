@@ -14,7 +14,7 @@ public class SpringBootDockerApplication
         SpringApplication.run(SpringBootDockerApplication.class, args);
     }
 
-    @GetMapping("/muhahaha")
+    @GetMapping("/")
     public String get()
     {
         return "Muhahaha";
