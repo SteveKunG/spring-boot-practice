@@ -1,11 +1,11 @@
-package com.stevekung.springbootdocker.web;
+package com.stevekung.springbootpostgresql.web;
 
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.stevekung.springbootdocker.data.Ingredient;
+import com.stevekung.springbootpostgresql.data.Ingredient;
 
 @RestController
 @RequestMapping("/api/v1/ingredient")

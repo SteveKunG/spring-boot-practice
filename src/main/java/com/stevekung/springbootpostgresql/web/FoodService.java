@@ -1,4 +1,4 @@
-package com.stevekung.springbootdocker.web;
+package com.stevekung.springbootpostgresql.web;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -13,8 +13,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
-import com.stevekung.springbootdocker.data.Food;
-import com.stevekung.springbootdocker.repo.FoodRepository;
+import com.stevekung.springbootpostgresql.data.Food;
+import com.stevekung.springbootpostgresql.repo.FoodRepository;
 
 @Service
 public class FoodService

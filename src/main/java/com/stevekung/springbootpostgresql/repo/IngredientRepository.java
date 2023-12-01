@@ -1,4 +1,4 @@
-package com.stevekung.springbootdocker.repo;
+package com.stevekung.springbootpostgresql.repo;
 
 import java.util.List;
 import java.util.Optional;
@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.stevekung.springbootdocker.data.Ingredient;
+import com.stevekung.springbootpostgresql.data.Ingredient;
 
 @Repository
 public interface IngredientRepository extends JpaRepository<Ingredient, Long>

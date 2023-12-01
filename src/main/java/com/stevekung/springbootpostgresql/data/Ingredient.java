@@ -1,4 +1,4 @@
-package com.stevekung.springbootdocker.data;
+package com.stevekung.springbootpostgresql.data;
 
 import java.util.Objects;
 

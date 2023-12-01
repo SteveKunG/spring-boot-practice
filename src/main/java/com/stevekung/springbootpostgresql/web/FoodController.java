@@ -1,4 +1,4 @@
-package com.stevekung.springbootdocker.web;
+package com.stevekung.springbootpostgresql.web;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -7,7 +7,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.stevekung.springbootdocker.data.Food;
+import com.stevekung.springbootpostgresql.data.Food;
 
 @RestController
 @RequestMapping("/api/v1/food")

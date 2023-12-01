@@ -1,4 +1,4 @@
-package com.stevekung.springbootdocker.web;
+package com.stevekung.springbootpostgresql.web;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,8 +13,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
-import com.stevekung.springbootdocker.data.Ingredient;
-import com.stevekung.springbootdocker.repo.IngredientRepository;
+import com.stevekung.springbootpostgresql.data.Ingredient;
+import com.stevekung.springbootpostgresql.repo.IngredientRepository;
 
 @Service
 public class IngredientService
@@ -63,7 +63,7 @@ public class IngredientService
 
         if (list.isEmpty())
         {
-            return new ResponseEntity<>(List.of(), HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(list, HttpStatus.OK);
     }
