@@ -1,10 +1,10 @@
-package com.stevekung.springbootdocker;
+package com.stevekung.springbootpostgresql;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class SpringBootDockerApplicationTests {
+class SpringBootPostgresqlApplicationTests {
 
 	@Test
 	void contextLoads() {
