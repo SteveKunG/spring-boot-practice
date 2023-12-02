@@ -1,13 +1,13 @@
-package com.stevekung.springbootpostgresql.web;
+package com.stevekung.springbootmysql.web;
 
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.stevekung.springbootpostgresql.data.Ingredient;
-import com.stevekung.springbootpostgresql.data.dto.IngredientDTO;
-import com.stevekung.springbootpostgresql.template.ControllerTemplate;
+import com.stevekung.springbootmysql.data.Ingredient;
+import com.stevekung.springbootmysql.data.dto.IngredientDTO;
+import com.stevekung.springbootmysql.template.ControllerTemplate;
 
 @RestController
 @RequestMapping("/api/v1/ingredient")

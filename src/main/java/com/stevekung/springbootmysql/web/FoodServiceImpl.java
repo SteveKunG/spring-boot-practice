@@ -1,4 +1,4 @@
-package com.stevekung.springbootpostgresql.web;
+package com.stevekung.springbootmysql.web;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -14,10 +14,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
-import com.stevekung.springbootpostgresql.data.Food;
-import com.stevekung.springbootpostgresql.data.dto.FoodDTO;
-import com.stevekung.springbootpostgresql.repo.FoodRepository;
-import com.stevekung.springbootpostgresql.template.ServiceTemplate;
+import com.stevekung.springbootmysql.data.Food;
+import com.stevekung.springbootmysql.data.dto.FoodDTO;
+import com.stevekung.springbootmysql.repo.FoodRepository;
+import com.stevekung.springbootmysql.template.ServiceTemplate;
 
 @Service
 public class FoodServiceImpl implements ServiceTemplate<FoodDTO>

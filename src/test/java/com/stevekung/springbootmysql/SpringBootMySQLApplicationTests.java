@@ -1,10 +1,10 @@
-package com.stevekung.springbootpostgresql;
+package com.stevekung.springbootmysql;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class SpringBootPostgresqlApplicationTests
+class SpringBootMySQLApplicationTests
 {
     @Test
     void contextLoads()

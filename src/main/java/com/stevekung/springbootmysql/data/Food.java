@@ -1,4 +1,4 @@
-package com.stevekung.springbootpostgresql.data;
+package com.stevekung.springbootmysql.data;
 
 import java.time.LocalDate;
 import java.util.List;
