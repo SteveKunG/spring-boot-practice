@@ -1,13 +1,13 @@
-package com.stevekung.springbootpostgresql.web;
+package com.stevekung.springbooth2.web;
 
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.stevekung.springbootpostgresql.data.Ingredient;
-import com.stevekung.springbootpostgresql.data.dto.IngredientDTO;
-import com.stevekung.springbootpostgresql.template.ControllerTemplate;
+import com.stevekung.springbooth2.data.Ingredient;
+import com.stevekung.springbooth2.data.dto.IngredientDTO;
+import com.stevekung.springbooth2.template.ControllerTemplate;
 
 @RestController
 @RequestMapping("/api/v1/ingredient")

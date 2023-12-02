@@ -1,4 +1,4 @@
-package com.stevekung.springbootpostgresql.data;
+package com.stevekung.springbooth2.data;
 
 import jakarta.persistence.*;
 import lombok.*;

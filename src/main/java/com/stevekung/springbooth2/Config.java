@@ -1,4 +1,4 @@
-package com.stevekung.springbootpostgresql;
+package com.stevekung.springbooth2;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;

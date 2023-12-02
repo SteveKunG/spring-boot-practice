@@ -1,4 +1,4 @@
-package com.stevekung.springbootpostgresql.web;
+package com.stevekung.springbooth2.web;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,10 +14,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
-import com.stevekung.springbootpostgresql.data.Ingredient;
-import com.stevekung.springbootpostgresql.data.dto.IngredientDTO;
-import com.stevekung.springbootpostgresql.repo.IngredientRepository;
-import com.stevekung.springbootpostgresql.template.ServiceTemplate;
+import com.stevekung.springbooth2.data.Ingredient;
+import com.stevekung.springbooth2.data.dto.IngredientDTO;
+import com.stevekung.springbooth2.repo.IngredientRepository;
+import com.stevekung.springbooth2.template.ServiceTemplate;
 
 @Service
 public class IngredientServiceImpl implements ServiceTemplate<IngredientDTO>

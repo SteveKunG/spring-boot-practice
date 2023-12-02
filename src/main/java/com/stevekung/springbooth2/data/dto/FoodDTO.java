@@ -1,9 +1,9 @@
-package com.stevekung.springbootpostgresql.data.dto;
+package com.stevekung.springbooth2.data.dto;
 
 import java.time.LocalDate;
 import java.util.List;
 
-import com.stevekung.springbootpostgresql.data.Ingredient;
+import com.stevekung.springbooth2.data.Ingredient;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

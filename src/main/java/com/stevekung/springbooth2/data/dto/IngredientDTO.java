@@ -1,4 +1,4 @@
-package com.stevekung.springbootpostgresql.data.dto;
+package com.stevekung.springbooth2.data.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
