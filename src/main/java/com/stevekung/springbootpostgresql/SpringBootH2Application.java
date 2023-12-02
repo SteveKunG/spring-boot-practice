@@ -7,11 +7,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication
 @RestController
-public class SpringBootPostgresqlApplication
+public class SpringBootH2Application
 {
+    // Driver Class : org.h2.Driver
+    // Database : jdbc:h2:mem:food
+    // Web : http://localhost:8080/h2-console/
     public static void main(String[] args)
     {
-        SpringApplication.run(SpringBootPostgresqlApplication.class, args);
+        SpringApplication.run(SpringBootH2Application.class, args);
     }
 
     @GetMapping("/")
