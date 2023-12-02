@@ -1,4 +1,4 @@
-package com.stevekung.springbootpostgresql.template;
+package com.stevekung.springbootmongodb.template;
 
 import java.util.List;
 

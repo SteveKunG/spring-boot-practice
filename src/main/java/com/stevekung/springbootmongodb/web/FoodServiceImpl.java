@@ -1,4 +1,4 @@
-package com.stevekung.springbootpostgresql.web;
+package com.stevekung.springbootmongodb.web;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -14,10 +14,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
-import com.stevekung.springbootpostgresql.data.Food;
-import com.stevekung.springbootpostgresql.data.dto.FoodDTO;
-import com.stevekung.springbootpostgresql.repo.FoodRepository;
-import com.stevekung.springbootpostgresql.template.ServiceTemplate;
+import com.stevekung.springbootmongodb.data.Food;
+import com.stevekung.springbootmongodb.data.dto.FoodDTO;
+import com.stevekung.springbootmongodb.repo.FoodRepository;
+import com.stevekung.springbootmongodb.template.ServiceTemplate;
 
 @Service
 public class FoodServiceImpl implements ServiceTemplate<FoodDTO>
@@ -45,7 +45,7 @@ public class FoodServiceImpl implements ServiceTemplate<FoodDTO>
 
     @Override
     @Transactional(readOnly = true)
-    public ResponseEntity<String> getById(Long id)
+    public ResponseEntity<String> getById(String id)
     {
         var optional = this.foodRepository.findById(id);
         return optional.map(food -> new ResponseEntity<>("Food: " + food, HttpStatus.OK)).orElseGet(() -> new ResponseEntity<>("Food ID '" + id + "' does not exist!", HttpStatus.NOT_FOUND));
@@ -78,7 +78,7 @@ public class FoodServiceImpl implements ServiceTemplate<FoodDTO>
     }
 
     @Transactional
-    public void updateSimple(Long id, String name, LocalDate expiredDate)
+    public void updateSimple(String id, String name, LocalDate expiredDate)
     {
         var object = this.foodRepository.findById(id).orElseThrow(() -> new RuntimeException("Food ID with '" + id + "' does not exist!"));
 
@@ -93,11 +93,12 @@ public class FoodServiceImpl implements ServiceTemplate<FoodDTO>
             LOGGER.info("Update Expired Date from '{}' to '{}'", object.getExpiredDate(), expiredDate);
             object.setExpiredDate(expiredDate);
         }
+        this.foodRepository.save(object);
     }
 
     @Override
     @Transactional
-    public ResponseEntity<String> deleteById(Long id)
+    public ResponseEntity<String> deleteById(String id)
     {
         if (!this.foodRepository.existsById(id))
         {

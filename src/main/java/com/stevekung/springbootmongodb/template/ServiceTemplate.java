@@ -1,4 +1,4 @@
-package com.stevekung.springbootpostgresql.template;
+package com.stevekung.springbootmongodb.template;
 
 import java.util.List;
 
@@ -8,13 +8,13 @@ public interface ServiceTemplate<DTO>
 {
     List<DTO> getAll();
 
-    ResponseEntity<String> getById(Long id);
+    ResponseEntity<String> getById(String id);
 
     ResponseEntity<String> getByName(String name);
 
     ResponseEntity<String> add(DTO obj);
 
-    ResponseEntity<String> deleteById(Long id);
+    ResponseEntity<String> deleteById(String id);
 
     ResponseEntity<String> deleteByName(String name);
 }

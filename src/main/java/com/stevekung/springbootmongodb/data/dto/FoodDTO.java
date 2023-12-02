@@ -1,4 +1,6 @@
-package com.stevekung.springbootpostgresql.data.dto;
+package com.stevekung.springbootmongodb.data.dto;
+
+import java.time.LocalDate;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -10,9 +12,9 @@ import lombok.Setter;
 @Setter
 @Getter
 // Data Transfer Object
-public class IngredientDTO
+public class FoodDTO
 {
-    private Long id;
+    private String id;
     private String name;
-    private String type;
+    private LocalDate expiredDate;
 }
