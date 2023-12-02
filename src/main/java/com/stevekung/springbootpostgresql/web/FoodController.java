@@ -7,22 +7,25 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.stevekung.springbootpostgresql.data.Food;
+import com.stevekung.springbootpostgresql.data.dto.FoodDTO;
+import com.stevekung.springbootpostgresql.template.ControllerTemplate;
 
 @RestController
 @RequestMapping("/api/v1/food")
-public record FoodController(FoodService foodService)
+public record FoodController(FoodServiceImpl foodService) implements ControllerTemplate<FoodDTO>
 {
+    @Override
     @PostMapping
-    public ResponseEntity<String> add(@RequestBody Food food)
+    public ResponseEntity<String> add(@RequestBody FoodDTO object)
     {
-        return this.foodService.add(food);
+        return this.foodService.add(object);
     }
 
+    @Override
     @GetMapping
-    public List<Food> getAll()
+    public List<FoodDTO> getAll()
     {
-        return this.foodService.getFoods();
+        return this.foodService.getAll();
     }
 
     @GetMapping("/id/{id}")
@@ -38,13 +41,13 @@ public record FoodController(FoodService foodService)
     }
 
     @PutMapping(path = "{id}")
-    public void updateSimple(@PathVariable("id") Long id, @RequestParam(required = false) String name, @RequestParam(required = false) @DateTimeFormat LocalDate expiredDate)
+    public void updateSimple(@PathVariable(name = "id") Long id, @RequestParam(required = false) String name, @RequestParam(required = false) @DateTimeFormat LocalDate expiredDate)
     {
         this.foodService.updateSimple(id, name, expiredDate);
     }
 
     @DeleteMapping(path = "/id/{id}")
-    public ResponseEntity<String> deleteById(@PathVariable("id") Long id)
+    public ResponseEntity<String> deleteById(@PathVariable(name = "id") Long id)
     {
         return this.foodService.deleteById(id);
     }

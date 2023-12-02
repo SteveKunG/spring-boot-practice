@@ -6,21 +6,25 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import com.stevekung.springbootpostgresql.data.Ingredient;
+import com.stevekung.springbootpostgresql.data.dto.IngredientDTO;
+import com.stevekung.springbootpostgresql.template.ControllerTemplate;
 
 @RestController
 @RequestMapping("/api/v1/ingredient")
-public record IngredientController(IngredientService ingredientService)
+public record IngredientController(IngredientServiceImpl ingredientService) implements ControllerTemplate<IngredientDTO>
 {
+    @Override
     @PostMapping
-    public ResponseEntity<String> add(@RequestBody Ingredient food)
+    public ResponseEntity<String> add(@RequestBody IngredientDTO object)
     {
-        return this.ingredientService.add(food);
+        return this.ingredientService.add(object);
     }
 
+    @Override
     @GetMapping
-    public List<Ingredient> getAll()
+    public List<IngredientDTO> getAll()
     {
-        return this.ingredientService.getIngredients();
+        return this.ingredientService.getAll();
     }
 
     @GetMapping("/id/{id}")
@@ -42,13 +46,13 @@ public record IngredientController(IngredientService ingredientService)
     }
 
     @PutMapping(path = "{id}")
-    public ResponseEntity<List<String>> updateSimple(@PathVariable("id") Long id, @RequestParam(required = false) String name, @RequestParam(required = false) String type)
+    public void updateSimple(@PathVariable(name = "id") Long id, @RequestBody IngredientDTO object)
     {
-        return this.ingredientService.updateSimple(id, name, type);
+        this.ingredientService.updateSimple(id, object);
     }
 
     @DeleteMapping(path = "/id/{id}")
-    public ResponseEntity<String> deleteById(@PathVariable("id") Long id)
+    public ResponseEntity<String> deleteById(@PathVariable(name = "id") Long id)
     {
         return this.ingredientService.deleteById(id);
     }
