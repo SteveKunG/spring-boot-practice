@@ -48,12 +48,7 @@ public class FoodServiceImpl implements ServiceTemplate<FoodDTO>
     public ResponseEntity<String> getById(Long id)
     {
         var optional = this.foodRepository.findById(id);
-
-        if (!optional.isPresent())
-        {
-            return new ResponseEntity<>("Food ID '" + id + "' does not exist!", HttpStatus.NOT_FOUND);
-        }
-        return new ResponseEntity<>("Food: " + optional.get().toString(), HttpStatus.OK);
+        return optional.map(food -> new ResponseEntity<>("Food: " + food, HttpStatus.OK)).orElseGet(() -> new ResponseEntity<>("Food ID '" + id + "' does not exist!", HttpStatus.NOT_FOUND));
     }
 
     @Override
@@ -61,12 +56,7 @@ public class FoodServiceImpl implements ServiceTemplate<FoodDTO>
     public ResponseEntity<String> getByName(String name)
     {
         var optional = this.foodRepository.findByName(name);
-
-        if (!optional.isPresent())
-        {
-            return new ResponseEntity<>("Food Name '" + name + "' does not exist!", HttpStatus.NOT_FOUND);
-        }
-        return new ResponseEntity<>("Food: " + optional.get().toString(), HttpStatus.OK);
+        return optional.map(food -> new ResponseEntity<>("Food: " + food, HttpStatus.OK)).orElseGet(() -> new ResponseEntity<>("Food Name '" + name + "' does not exist!", HttpStatus.NOT_FOUND));
     }
 
     @Override
@@ -84,7 +74,7 @@ public class FoodServiceImpl implements ServiceTemplate<FoodDTO>
         this.foodRepository.save(food);
 
         LOGGER.info("Saving Food: {}", food);
-        return new ResponseEntity<>("Saving Food: " + food.toString(), HttpStatus.OK);
+        return new ResponseEntity<>("Saving Food: " + food, HttpStatus.OK);
     }
 
     @Transactional

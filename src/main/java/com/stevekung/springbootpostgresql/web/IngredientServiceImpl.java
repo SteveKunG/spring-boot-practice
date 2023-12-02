@@ -48,12 +48,7 @@ public class IngredientServiceImpl implements ServiceTemplate<IngredientDTO>
     public ResponseEntity<String> getById(Long id)
     {
         var optional = this.ingredientRepository.findById(id);
-
-        if (!optional.isPresent())
-        {
-            return new ResponseEntity<>("Ingredient ID '" + id + "' does not exist!", HttpStatus.NOT_FOUND);
-        }
-        return new ResponseEntity<>("Ingredient: " + optional.get().toString(), HttpStatus.OK);
+        return optional.map(ingredient -> new ResponseEntity<>("Ingredient: " + ingredient, HttpStatus.OK)).orElseGet(() -> new ResponseEntity<>("Ingredient ID '" + id + "' does not exist!", HttpStatus.NOT_FOUND));
     }
 
     @Override
@@ -61,12 +56,7 @@ public class IngredientServiceImpl implements ServiceTemplate<IngredientDTO>
     public ResponseEntity<String> getByName(String name)
     {
         var optional = this.ingredientRepository.findByName(name);
-
-        if (!optional.isPresent())
-        {
-            return new ResponseEntity<>("Ingredient Name '" + name + "' does not exist!", HttpStatus.NOT_FOUND);
-        }
-        return new ResponseEntity<>("Ingredient: " + optional.get().toString(), HttpStatus.OK);
+        return optional.map(ingredient -> new ResponseEntity<>("Ingredient: " + ingredient, HttpStatus.OK)).orElseGet(() -> new ResponseEntity<>("Ingredient Name '" + name + "' does not exist!", HttpStatus.NOT_FOUND));
     }
 
     @Transactional(readOnly = true)
@@ -96,13 +86,12 @@ public class IngredientServiceImpl implements ServiceTemplate<IngredientDTO>
         this.ingredientRepository.save(ingredient);
 
         LOGGER.info("Saving Ingredient: {}", ingredient);
-        return new ResponseEntity<>("Saving Ingredient: " + ingredient.toString(), HttpStatus.OK);
+        return new ResponseEntity<>("Saving Ingredient: " + ingredient, HttpStatus.OK);
     }
 
     @Transactional
     public void updateSimple(Long id, IngredientDTO dto)
     {
-        var list = new ArrayList<String>();
         var object = this.ingredientRepository.findById(id).orElseThrow(() -> new RuntimeException("Ingredient ID with '" + id + "' does not exist!"));
         var name = dto.getName();
         var type = dto.getType();
@@ -110,14 +99,12 @@ public class IngredientServiceImpl implements ServiceTemplate<IngredientDTO>
         if (StringUtils.hasText(name) && !Objects.equals(object.getName(), name))
         {
             LOGGER.info("Update Name from '{}' to '{}'", object.getName(), name);
-            list.add("Update Name from '%s' to '%s'".formatted(object.getName(), name));
             object.setName(name);
         }
 
         if (StringUtils.hasText(type) && !Objects.equals(object.getType(), type))
         {
             LOGGER.info("Update Type from '{}' to '{}'", object.getType(), type);
-            list.add("Update Type from '%s' to '%s'".formatted(object.getType(), type));
             object.setType(type);
         }
     }
